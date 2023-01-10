@@ -9,7 +9,7 @@ import UIKit
 
 class AccountSummaryViewController: UIViewController {
     
-    var accounts: [AccountSummayTableViewCell.ViewModel] = []
+    var accounts: [AccountSummaryCell.ViewModel] = []
     
     let tableView = UITableView()
     
@@ -32,8 +32,8 @@ extension AccountSummaryViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.register(AccountSummayTableViewCell.self, forCellReuseIdentifier: AccountSummayTableViewCell.reuseID)
-        tableView.rowHeight = AccountSummayTableViewCell.rowHeight
+        tableView.register(AccountSummaryCell.self, forCellReuseIdentifier: AccountSummaryCell.reuseID)
+        tableView.rowHeight = AccountSummaryCell.rowHeight
         tableView.tableFooterView = UIView()
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -68,7 +68,7 @@ extension AccountSummaryViewController: UITableViewDataSource {
         
         guard !accounts.isEmpty else { return UITableViewCell() }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: AccountSummayTableViewCell.reuseID, for: indexPath) as! AccountSummayTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: AccountSummaryCell.reuseID, for: indexPath) as! AccountSummaryCell
         let account = accounts[indexPath.row]
         cell.configure(with: account)
         return cell
@@ -86,12 +86,30 @@ extension AccountSummaryViewController {
     
     private func fetchData() {
         
-        let savings = AccountSummayTableViewCell.ViewModel(accountType: .Banking, accountName: "Basic Savings")
-        let visa = AccountSummayTableViewCell.ViewModel(accountType: .CreditCard, accountName: "Visa Avion Card")
-        let investment = AccountSummayTableViewCell.ViewModel(accountType: .Investment, accountName: "Tax-Free Saver")
+        let savings = AccountSummaryCell.ViewModel(accountType: .Banking,
+                                                   accountName: "Basic Savings",
+                                                   balance: 929466.23)
+        let chequing = AccountSummaryCell.ViewModel(accountType: .Banking,
+                                                    accountName: "No-Fee All-In Chequing",
+                                                    balance: 17562.44)
+        let visa = AccountSummaryCell.ViewModel(accountType: .CreditCard,
+                                                accountName: "Visa Avion Card",
+                                                balance: 412.83)
+        let masterCard = AccountSummaryCell.ViewModel(accountType: .CreditCard,
+                                                      accountName: "Student Mastercard",
+                                                      balance: 50.8)
+        let investment1 = AccountSummaryCell.ViewModel(accountType: .Investment,
+                                                       accountName: "Tax-Free Saver",
+                                                       balance: 2000.0)
+        let investment2 = AccountSummaryCell.ViewModel(accountType: .Investment,
+                                                       accountName: "Growth Fund",
+                                                       balance: 15000.00)
         
         accounts.append(savings)
+        accounts.append(chequing)
         accounts.append(visa)
-        accounts.append(investment)
+        accounts.append(masterCard)
+        accounts.append(investment1)
+        accounts.append(investment2)
     }
 }
