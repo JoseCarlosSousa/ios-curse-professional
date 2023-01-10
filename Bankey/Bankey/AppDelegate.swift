@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let loginViewController = LoginViewController()
     let onboardingContainerViewController = OnboardingContainerViewController()
-    let logoutViewController = LogoutViewController()
+//    let logoutViewController = LogoutViewController()
     
     let mainViewController = MainViewController()
     
@@ -28,12 +28,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         loginViewController.delegate = self
         onboardingContainerViewController.delegate = self
-        logoutViewController.delegate = self
         
-        window?.rootViewController = mainViewController
+        displayLogin()
 
-        mainViewController.selectedIndex = 0
         return true
+    }
+    
+    private func displayLogin() {
+        setRootViewController(loginViewController)
+    }
+    
+    private func displayNextScreen() {
+        if LocalState.hasOnboard {
+            prepareMainView()
+            setRootViewController(mainViewController)
+        } else {
+            setRootViewController(onboardingContainerViewController)
+        }
+    }
+    
+    private func prepareMainView() {
+        mainViewController.setStatusBar()
+
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().backgroundColor = appColor
     }
 }
 
@@ -57,18 +75,15 @@ extension AppDelegate {
 
 extension AppDelegate: LoginViewControllerDelegate {
     func didLogin() {
-        if LocalState.hasOnboard {
-            setRootViewController(logoutViewController)
-        } else {
-            setRootViewController(onboardingContainerViewController)
-        }
+        displayNextScreen()
     }
 }
 
 extension AppDelegate: OnboardingContainerViewControllerDelegate {
     func didFinishOnboarding() {
         LocalState.hasOnboard = true
-        setRootViewController(logoutViewController, animated: false)
+        prepareMainView()
+        setRootViewController(mainViewController, animated: false)
     }
 }
 
