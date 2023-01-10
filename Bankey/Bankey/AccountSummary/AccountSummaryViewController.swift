@@ -67,8 +67,9 @@ extension AccountSummaryViewController: UITableViewDataSource {
 
         
         guard !accounts.isEmpty else { return UITableViewCell() }
-        
+
         let cell = tableView.dequeueReusableCell(withIdentifier: AccountSummaryCell.reuseID, for: indexPath) as! AccountSummaryCell
+
         let account = accounts[indexPath.row]
         cell.configure(with: account)
         return cell
@@ -111,5 +112,6 @@ extension AccountSummaryViewController {
         accounts.append(masterCard)
         accounts.append(investment1)
         accounts.append(investment2)
+
     }
 }
