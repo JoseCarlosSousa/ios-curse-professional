@@ -9,6 +9,19 @@ import UIKit
 
 class AccountSummayTableViewCell: UITableViewCell {
 
+    enum AccountType: String {
+        case Banking
+        case CreditCard
+        case Investment
+    }
+    
+    struct ViewModel {
+        let accountType: AccountType
+        let accountName: String
+    }
+    
+    let viewModel: ViewModel? = nil
+    
     let typeLabel = UILabel()
     let underlineView = UIView()
     let nameLabel = UILabel()
@@ -40,19 +53,19 @@ extension AccountSummayTableViewCell {
         typeLabel.translatesAutoresizingMaskIntoConstraints = false
         typeLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         typeLabel.adjustsFontForContentSizeCategory = true
-        typeLabel.text = "Account type"
+//        typeLabel.text = "Account type"
         
         contentView.addSubview(typeLabel) // important! Add to contentView.
         
         underlineView.translatesAutoresizingMaskIntoConstraints = false
-        underlineView.backgroundColor = appColor
+//        underlineView.backgroundColor = appColor
         
         contentView.addSubview(underlineView)
         
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.font = UIFont.preferredFont(forTextStyle: .body)
         nameLabel.adjustsFontForContentSizeCategory = true
-        nameLabel.text = "Account name"
+//        nameLabel.text = "Account name"
         
         contentView.addSubview(nameLabel)
         
@@ -63,13 +76,13 @@ extension AccountSummayTableViewCell {
         balanceLabel.translatesAutoresizingMaskIntoConstraints = false
         balanceLabel.font = UIFont.preferredFont(forTextStyle: .body)
         balanceLabel.textAlignment = .right
-        balanceLabel.text = "Some balance"
+//        balanceLabel.text = "Some balance"
         
         balanceAmountLabel.translatesAutoresizingMaskIntoConstraints = false
         balanceAmountLabel.font = UIFont.preferredFont(forTextStyle: .body)
         balanceAmountLabel.textAlignment = .right
 //        balanceAmountLabel.text = "$929,499.63"
-        balanceAmountLabel.attributedText = makeFormattedBalance(dollars: "929,499", cents: "63")
+//        balanceAmountLabel.attributedText = makeFormattedBalance(dollars: "929,499", cents: "63")
         
         balanceStackView.addArrangedSubview(balanceLabel)
         balanceStackView.addArrangedSubview(balanceAmountLabel)
@@ -119,5 +132,33 @@ extension AccountSummayTableViewCell {
         rootString.append(centString)
         
         return rootString
+    }
+}
+
+extension AccountSummayTableViewCell {
+    
+    func configure(with vm: ViewModel) {
+        typeLabel.text = vm.accountType.rawValue
+        nameLabel.text = vm.accountName
+        
+        switch vm.accountType {
+            
+        case .Banking:
+            setValues(color: .blue, balance: "Some balance", amount: "929,499.63")
+            break
+        case .CreditCard:
+            setValues(color: .gray, balance: "Balance", amount: "1,499.2")
+            break
+        case .Investment:
+            setValues(color: .yellow, balance: "Some", amount: "39.15")
+            break
+        }
+    }
+    
+    private func setValues(color: UIColor, balance: String, amount: String) {
+        underlineView.backgroundColor = color
+        balanceLabel.text = balance
+        let param = amount.split(separator: ".")
+        balanceAmountLabel.attributedText = makeFormattedBalance(dollars: String(param[0]), cents: String(param[1]))
     }
 }
