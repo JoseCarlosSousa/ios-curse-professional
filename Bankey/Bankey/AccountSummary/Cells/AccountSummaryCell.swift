@@ -58,21 +58,15 @@ extension AccountSummaryCell {
         typeLabel.translatesAutoresizingMaskIntoConstraints = false
         typeLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         typeLabel.adjustsFontForContentSizeCategory = true
-//        typeLabel.text = "Account type"
         
-        contentView.addSubview(typeLabel) // important! Add to contentView.
         
         underlineView.translatesAutoresizingMaskIntoConstraints = false
-//        underlineView.backgroundColor = appColor
         
-        contentView.addSubview(underlineView)
         
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.font = UIFont.preferredFont(forTextStyle: .body)
         nameLabel.adjustsFontForContentSizeCategory = true
-//        nameLabel.text = "Account name"
-        
-        contentView.addSubview(nameLabel)
+        nameLabel.adjustsFontSizeToFitWidth = true
         
         balanceStackView.translatesAutoresizingMaskIntoConstraints = false
         balanceStackView.axis = .vertical
@@ -81,23 +75,23 @@ extension AccountSummaryCell {
         balanceLabel.translatesAutoresizingMaskIntoConstraints = false
         balanceLabel.font = UIFont.preferredFont(forTextStyle: .body)
         balanceLabel.textAlignment = .right
-//        balanceLabel.text = "Some balance"
+        balanceLabel.adjustsFontSizeToFitWidth = true
         
         balanceAmountLabel.translatesAutoresizingMaskIntoConstraints = false
         balanceAmountLabel.font = UIFont.preferredFont(forTextStyle: .body)
         balanceAmountLabel.textAlignment = .right
-//        balanceAmountLabel.text = "$929,499.63"
-//        balanceAmountLabel.attributedText = makeFormattedBalance(dollars: "929,499", cents: "63")
         
         balanceStackView.addArrangedSubview(balanceLabel)
         balanceStackView.addArrangedSubview(balanceAmountLabel)
-        
-        contentView.addSubview(balanceStackView)
-        
+
         chevronImageView.translatesAutoresizingMaskIntoConstraints = false
         let chevronImage = UIImage(systemName: "chevron.right")!.withTintColor(appColor, renderingMode: .alwaysOriginal)
         chevronImageView.image = chevronImage
         
+        contentView.addSubview(typeLabel) // important! Add to contentView.
+        contentView.addSubview(underlineView)
+        contentView.addSubview(nameLabel)
+        contentView.addSubview(balanceStackView)
         contentView.addSubview(chevronImageView)
     }
     

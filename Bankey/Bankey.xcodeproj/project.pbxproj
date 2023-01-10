@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2A400F7E296C9189001A2B9B /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A400F7D296C9189001A2B9B /* LogoutViewController.swift */; };
 		2A400F81296C9828001A2B9B /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A400F80296C9828001A2B9B /* LocalState.swift */; };
 		2A400F83296C9E39001A2B9B /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A400F82296C9E39001A2B9B /* UIViewController+Utils.swift */; };
 		2A400F85296CAF8B001A2B9B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A400F84296CAF8B001A2B9B /* MainViewController.swift */; };
@@ -17,8 +16,10 @@
 		2A400F8F296CDC5A001A2B9B /* AccountSummaryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A400F8D296CDC5A001A2B9B /* AccountSummaryHeaderView.swift */; };
 		2A400F90296CDC5A001A2B9B /* AccountSummaryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A400F8E296CDC5A001A2B9B /* AccountSummaryHeaderView.xib */; };
 		2A400F95296D95E5001A2B9B /* AccountSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A400F93296D95E5001A2B9B /* AccountSummaryCell.swift */; };
-		2A400F9A296DC8D9001A2B9B /* DecimalUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A400F99296DC8D9001A2B9B /* DecimalUtil.swift */; };
+		2A400F9A296DC8D9001A2B9B /* Decimal+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A400F99296DC8D9001A2B9B /* Decimal+Util.swift */; };
 		2A400F9C296DC953001A2B9B /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A400F9B296DC953001A2B9B /* CurrencyFormatter.swift */; };
+		2A400F9E296DED22001A2B9B /* NSNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A400F9D296DED22001A2B9B /* NSNotificationName.swift */; };
+		2A400FA0296DEFA0001A2B9B /* UITextField+SecureToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A400F9F296DEFA0001A2B9B /* UITextField+SecureToggle.swift */; };
 		2A9EBCED296C3D8C00515320 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9EBCEC296C3D8C00515320 /* AppDelegate.swift */; };
 		2A9EBCF1296C3D8C00515320 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9EBCF0296C3D8C00515320 /* LoginViewController.swift */; };
 		2A9EBCF6296C3D8F00515320 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A9EBCF5296C3D8F00515320 /* Assets.xcassets */; };
@@ -29,7 +30,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2A400F7D296C9189001A2B9B /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		2A400F80296C9828001A2B9B /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
 		2A400F82296C9E39001A2B9B /* UIViewController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
 		2A400F84296CAF8B001A2B9B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -39,8 +39,10 @@
 		2A400F8D296CDC5A001A2B9B /* AccountSummaryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryHeaderView.swift; sourceTree = "<group>"; };
 		2A400F8E296CDC5A001A2B9B /* AccountSummaryHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountSummaryHeaderView.xib; sourceTree = "<group>"; };
 		2A400F93296D95E5001A2B9B /* AccountSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryCell.swift; sourceTree = "<group>"; };
-		2A400F99296DC8D9001A2B9B /* DecimalUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalUtil.swift; sourceTree = "<group>"; };
+		2A400F99296DC8D9001A2B9B /* Decimal+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Util.swift"; sourceTree = "<group>"; };
 		2A400F9B296DC953001A2B9B /* CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
+		2A400F9D296DED22001A2B9B /* NSNotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNotificationName.swift; sourceTree = "<group>"; };
+		2A400F9F296DEFA0001A2B9B /* UITextField+SecureToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+SecureToggle.swift"; sourceTree = "<group>"; };
 		2A9EBCE9296C3D8C00515320 /* Bankey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bankey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A9EBCEC296C3D8C00515320 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A9EBCF0296C3D8C00515320 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -66,10 +68,12 @@
 		2A400F7F296C9812001A2B9B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				2A400F80296C9828001A2B9B /* LocalState.swift */,
 				2A400F82296C9E39001A2B9B /* UIViewController+Utils.swift */,
-				2A400F99296DC8D9001A2B9B /* DecimalUtil.swift */,
+				2A400F99296DC8D9001A2B9B /* Decimal+Util.swift */,
+				2A400F9F296DEFA0001A2B9B /* UITextField+SecureToggle.swift */,
+				2A400F80296C9828001A2B9B /* LocalState.swift */,
 				2A400F9B296DC953001A2B9B /* CurrencyFormatter.swift */,
+				2A400F9D296DED22001A2B9B /* NSNotificationName.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -164,7 +168,6 @@
 			children = (
 				2A9EBCF0296C3D8C00515320 /* LoginViewController.swift */,
 				2A9EBD02296C409B00515320 /* LoginView.swift */,
-				2A400F7D296C9189001A2B9B /* LogoutViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -251,7 +254,7 @@
 			files = (
 				2A400F8F296CDC5A001A2B9B /* AccountSummaryHeaderView.swift in Sources */,
 				2A400F9C296DC953001A2B9B /* CurrencyFormatter.swift in Sources */,
-				2A400F9A296DC8D9001A2B9B /* DecimalUtil.swift in Sources */,
+				2A400F9A296DC8D9001A2B9B /* Decimal+Util.swift in Sources */,
 				2A400F83296C9E39001A2B9B /* UIViewController+Utils.swift in Sources */,
 				2A9EBD03296C409B00515320 /* LoginView.swift in Sources */,
 				2A400F81296C9828001A2B9B /* LocalState.swift in Sources */,
@@ -260,10 +263,11 @@
 				2A400F95296D95E5001A2B9B /* AccountSummaryCell.swift in Sources */,
 				2A9EBD06296C68F900515320 /* OnboardingContainerViewController.swift in Sources */,
 				2A400F85296CAF8B001A2B9B /* MainViewController.swift in Sources */,
+				2A400FA0296DEFA0001A2B9B /* UITextField+SecureToggle.swift in Sources */,
 				2A400F89296CB055001A2B9B /* MoveMoneyViewController.swift in Sources */,
+				2A400F9E296DED22001A2B9B /* NSNotificationName.swift in Sources */,
 				2A400F87296CB017001A2B9B /* AccountSummaryViewController.swift in Sources */,
 				2A400F8B296CB084001A2B9B /* MoreViewController.swift in Sources */,
-				2A400F7E296C9189001A2B9B /* LogoutViewController.swift in Sources */,
 				2A9EBCED296C3D8C00515320 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
