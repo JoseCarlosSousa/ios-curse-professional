@@ -16,6 +16,7 @@
 		2A400F8B296CB084001A2B9B /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A400F8A296CB084001A2B9B /* MoreViewController.swift */; };
 		2A400F8F296CDC5A001A2B9B /* AccountSummaryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A400F8D296CDC5A001A2B9B /* AccountSummaryHeaderView.swift */; };
 		2A400F90296CDC5A001A2B9B /* AccountSummaryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A400F8E296CDC5A001A2B9B /* AccountSummaryHeaderView.xib */; };
+		2A400F95296D95E5001A2B9B /* AccountSummayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A400F93296D95E5001A2B9B /* AccountSummayTableViewCell.swift */; };
 		2A9EBCED296C3D8C00515320 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9EBCEC296C3D8C00515320 /* AppDelegate.swift */; };
 		2A9EBCF1296C3D8C00515320 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9EBCF0296C3D8C00515320 /* LoginViewController.swift */; };
 		2A9EBCF6296C3D8F00515320 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A9EBCF5296C3D8F00515320 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 		2A400F8A296CB084001A2B9B /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		2A400F8D296CDC5A001A2B9B /* AccountSummaryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryHeaderView.swift; sourceTree = "<group>"; };
 		2A400F8E296CDC5A001A2B9B /* AccountSummaryHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountSummaryHeaderView.xib; sourceTree = "<group>"; };
+		2A400F93296D95E5001A2B9B /* AccountSummayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummayTableViewCell.swift; sourceTree = "<group>"; };
 		2A9EBCE9296C3D8C00515320 /* Bankey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bankey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A9EBCEC296C3D8C00515320 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A9EBCF0296C3D8C00515320 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -70,12 +72,43 @@
 			isa = PBXGroup;
 			children = (
 				2A400F86296CB017001A2B9B /* AccountSummaryViewController.swift */,
-				2A400F88296CB055001A2B9B /* MoveMoneyViewController.swift */,
-				2A400F8A296CB084001A2B9B /* MoreViewController.swift */,
+				2A400F91296D9594001A2B9B /* Header */,
+				2A400F92296D95A6001A2B9B /* Cells */,
+			);
+			path = AccountSummary;
+			sourceTree = "<group>";
+		};
+		2A400F91296D9594001A2B9B /* Header */ = {
+			isa = PBXGroup;
+			children = (
 				2A400F8D296CDC5A001A2B9B /* AccountSummaryHeaderView.swift */,
 				2A400F8E296CDC5A001A2B9B /* AccountSummaryHeaderView.xib */,
 			);
-			path = AccountSummary;
+			path = Header;
+			sourceTree = "<group>";
+		};
+		2A400F92296D95A6001A2B9B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2A400F93296D95E5001A2B9B /* AccountSummayTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		2A400F97296D9680001A2B9B /* MoveMoney */ = {
+			isa = PBXGroup;
+			children = (
+				2A400F88296CB055001A2B9B /* MoveMoneyViewController.swift */,
+			);
+			path = MoveMoney;
+			sourceTree = "<group>";
+		};
+		2A400F98296D969B001A2B9B /* More */ = {
+			isa = PBXGroup;
+			children = (
+				2A400F8A296CB084001A2B9B /* MoreViewController.swift */,
+			);
+			path = More;
 			sourceTree = "<group>";
 		};
 		2A9EBCE0296C3D8B00515320 = {
@@ -104,6 +137,8 @@
 				2A400F7F296C9812001A2B9B /* Utils */,
 				2A9EBD00296C403A00515320 /* Files */,
 				2A400F8C296CD81C001A2B9B /* AccountSummary */,
+				2A400F98296D969B001A2B9B /* More */,
+				2A400F97296D9680001A2B9B /* MoveMoney */,
 			);
 			path = Bankey;
 			sourceTree = "<group>";
@@ -214,6 +249,7 @@
 				2A400F81296C9828001A2B9B /* LocalState.swift in Sources */,
 				2A9EBCF1296C3D8C00515320 /* LoginViewController.swift in Sources */,
 				2A9EBD08296C72AA00515320 /* OnboardingViewController.swift in Sources */,
+				2A400F95296D95E5001A2B9B /* AccountSummayTableViewCell.swift in Sources */,
 				2A9EBD06296C68F900515320 /* OnboardingContainerViewController.swift in Sources */,
 				2A400F85296CAF8B001A2B9B /* MainViewController.swift in Sources */,
 				2A400F89296CB055001A2B9B /* MoveMoneyViewController.swift in Sources */,

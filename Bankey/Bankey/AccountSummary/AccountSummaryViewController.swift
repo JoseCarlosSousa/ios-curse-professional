@@ -20,8 +20,24 @@ class AccountSummaryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setup()
+    }
+}
+
+extension AccountSummaryViewController {
+    
+    private func setup() {
+        setupTableView()
+        setupTableHeaderView()
+    }
+    
+    private func setupTableView(){
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableView.register(AccountSummayTableViewCell.self, forCellReuseIdentifier: AccountSummayTableViewCell.reuseID)
+        tableView.rowHeight = AccountSummayTableViewCell.rowHeight
+        tableView.tableFooterView = UIView()
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
@@ -32,8 +48,6 @@ class AccountSummaryViewController: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
-        
-        setupTableHeaderView()
     }
     
     private func setupTableHeaderView() {
@@ -53,8 +67,7 @@ extension AccountSummaryViewController: UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = games[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: AccountSummayTableViewCell.reuseID, for: indexPath) as! AccountSummayTableViewCell
         return cell
     }
 }
