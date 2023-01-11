@@ -39,7 +39,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func displayLogin() {
-        setRootViewController(loginViewController)
+//        setRootViewController(loginViewController)
+        setRootViewController(mainViewController)
     }
     
     private func displayNextScreen() {

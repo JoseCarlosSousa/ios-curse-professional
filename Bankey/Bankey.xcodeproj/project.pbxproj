@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A05779F296EEC31007F7514 /* ShakeBellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A05779E296EEC31007F7514 /* ShakeBellView.swift */; };
 		2A400F81296C9828001A2B9B /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A400F80296C9828001A2B9B /* LocalState.swift */; };
 		2A400F83296C9E39001A2B9B /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A400F82296C9E39001A2B9B /* UIViewController+Utils.swift */; };
 		2A400F85296CAF8B001A2B9B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A400F84296CAF8B001A2B9B /* MainViewController.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A05779E296EEC31007F7514 /* ShakeBellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeBellView.swift; sourceTree = "<group>"; };
 		2A400F80296C9828001A2B9B /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
 		2A400F82296C9E39001A2B9B /* UIViewController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
 		2A400F84296CAF8B001A2B9B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +67,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A05779D296EEC01007F7514 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				2A05779E296EEC31007F7514 /* ShakeBellView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		2A400F7F296C9812001A2B9B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +155,7 @@
 				2A9EBD01296C407500515320 /* Login */,
 				2A9EBD04296C68CA00515320 /* Onboarding */,
 				2A400F7F296C9812001A2B9B /* Utils */,
+				2A05779D296EEC01007F7514 /* Components */,
 				2A9EBD00296C403A00515320 /* Files */,
 				2A400F8C296CD81C001A2B9B /* AccountSummary */,
 				2A400F98296D969B001A2B9B /* More */,
@@ -268,6 +279,7 @@
 				2A400F9E296DED22001A2B9B /* NSNotificationName.swift in Sources */,
 				2A400F87296CB017001A2B9B /* AccountSummaryViewController.swift in Sources */,
 				2A400F8B296CB084001A2B9B /* MoreViewController.swift in Sources */,
+				2A05779F296EEC31007F7514 /* ShakeBellView.swift in Sources */,
 				2A9EBCED296C3D8C00515320 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
