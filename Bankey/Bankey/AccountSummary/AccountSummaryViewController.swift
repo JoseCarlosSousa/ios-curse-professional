@@ -101,9 +101,9 @@ extension AccountSummaryViewController: UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         guard !accountCellViewModels.isEmpty else { return UITableViewCell() }
-
+        
         let account = accountCellViewModels[indexPath.row]
         
         if isLoaded {
@@ -118,7 +118,7 @@ extension AccountSummaryViewController: UITableViewDataSource {
 }
 
 extension AccountSummaryViewController: UITableViewDelegate {
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("didSelectRowAt: \(indexPath.row)")
     }
@@ -142,7 +142,7 @@ extension AccountSummaryViewController {
             case .success(let profile):
                 strongSelf.profile = profile
             case .failure(let error):
-                print(error.localizedDescription)
+                strongSelf.displayError(error)
             }
             group.leave()
         }
@@ -154,12 +154,13 @@ extension AccountSummaryViewController {
             switch result {
             case .success(let accounts):
                 strongSelf.accounts = accounts
+                
             case .failure(let error):
-                print(error.localizedDescription)
+                strongSelf.displayError(error)
             }
             group.leave()
         }
-
+        
         group.notify(queue: .main) { [weak self] in
             guard let strongSelf = self else { return }
             
@@ -186,6 +187,36 @@ extension AccountSummaryViewController {
                                          accountName: $0.name,
                                          balance: $0.amount)
         }
+    }
+    
+    private func displayError(_ error: NetworkError) {
+        let title: String
+        let message: String
+        switch error {
+            
+        case .badUrl:
+            title = "Bad URL"
+            message = "Please check your call URL."
+        case .serverError:
+            title = "Server Error"
+            message = "Please check your network connectivity and try again."
+            
+        case .decodingError:
+            title = "Decoding Error"
+            message = "We could not process your request. Please try again."
+        }
+        
+        showErrorAlert(title: title, message: message)
+    }
+    
+    private func showErrorAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
     }
 }
 
