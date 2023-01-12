@@ -19,6 +19,9 @@ class AccountSummaryViewController: UIViewController {
     
     let tableView = UITableView()
     var headerView = AccountSummaryHeaderView(frame: .zero)
+    let refreshControl = UIRefreshControl()
+    
+    var isLoaded =  false
     
     lazy var logoutBarButtonItem: UIBarButtonItem = {
         let barButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutTapped))
@@ -39,6 +42,8 @@ extension AccountSummaryViewController {
         setupNavigationBar()
         setupTableView()
         setupTableHeaderView()
+        setupRefreshControl()
+        setupSkeleton()
         fetchData()
     }
     
@@ -48,6 +53,7 @@ extension AccountSummaryViewController {
         tableView.dataSource = self
         
         tableView.register(AccountSummaryCell.self, forCellReuseIdentifier: AccountSummaryCell.reuseID)
+        tableView.register(SkeletonCell.self, forCellReuseIdentifier: SkeletonCell.reuseID)
         tableView.rowHeight = AccountSummaryCell.rowHeight
         tableView.tableFooterView = UIView()
         
@@ -72,6 +78,19 @@ extension AccountSummaryViewController {
     func setupNavigationBar() {
         navigationItem.rightBarButtonItem = logoutBarButtonItem
     }
+    
+    func setupRefreshControl() {
+        refreshControl.tintColor = appColor
+        refreshControl.addTarget(self, action: #selector(refreshContent), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+    }
+    
+    func setupSkeleton() {
+        let row = Account.makeSkeleton()
+        accounts = Array(repeating: row, count: 10)
+        
+        configureTableCells(with: accounts)
+    }
 }
 
 extension AccountSummaryViewController: UITableViewDataSource {
@@ -83,13 +102,17 @@ extension AccountSummaryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        
         guard !accountCellViewModels.isEmpty else { return UITableViewCell() }
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: AccountSummaryCell.reuseID, for: indexPath) as! AccountSummaryCell
-
         let account = accountCellViewModels[indexPath.row]
-        cell.configure(with: account)
+        
+        if isLoaded {
+            let cell = tableView.dequeueReusableCell(withIdentifier: AccountSummaryCell.reuseID, for: indexPath) as! AccountSummaryCell
+            cell.configure(with: account)
+            return cell
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: SkeletonCell.reuseID, for: indexPath) as! SkeletonCell
         return cell
     }
 }
@@ -108,14 +131,16 @@ extension AccountSummaryViewController {
         
         let group = DispatchGroup()
         
+        // Testing - random number selection
+        let userId = String(Int.random(in: 1..<4))
+        
         group.enter()
-        fetchProfile(forUserId: "1") { [weak self] result in
+        fetchProfile(forUserId: userId) { [weak self] result in
             guard let strongSelf = self else { return }
             
             switch result {
             case .success(let profile):
                 strongSelf.profile = profile
-                strongSelf.configureTableHeaderView(with: profile)
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -123,13 +148,12 @@ extension AccountSummaryViewController {
         }
         
         group.enter()
-        fetchAccounts(forUserId: "1") { [weak self] result in
+        fetchAccounts(forUserId: userId) { [weak self] result in
             guard let strongSelf = self else { return }
             
             switch result {
             case .success(let accounts):
                 strongSelf.accounts = accounts
-                strongSelf.configureTableCells(with: accounts)
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -139,6 +163,13 @@ extension AccountSummaryViewController {
         group.notify(queue: .main) { [weak self] in
             guard let strongSelf = self else { return }
             
+            strongSelf.tableView.refreshControl?.endRefreshing()
+            
+            guard let profile = strongSelf.profile else { return }
+            strongSelf.isLoaded = true
+            
+            strongSelf.configureTableHeaderView(with: profile)
+            strongSelf.configureTableCells(with: strongSelf.accounts)
             strongSelf.tableView.reloadData()
         }
     }
@@ -163,5 +194,18 @@ extension AccountSummaryViewController {
     
     @objc func logoutTapped(sender: UIBarButtonItem) {
         NotificationCenter.default.post(name: .LOGOUT, object: nil)
+    }
+    
+    @objc func refreshContent() {
+        reset()
+        setupSkeleton()
+        tableView.reloadData()
+        fetchData()
+    }
+    
+    private func reset() {
+        profile = nil
+        accounts = []
+        isLoaded = false
     }
 }

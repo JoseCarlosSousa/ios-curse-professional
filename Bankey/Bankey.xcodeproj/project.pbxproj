@@ -30,6 +30,8 @@
 		2A9EBD03296C409B00515320 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9EBD02296C409B00515320 /* LoginView.swift */; };
 		2A9EBD06296C68F900515320 /* OnboardingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9EBD05296C68F900515320 /* OnboardingContainerViewController.swift */; };
 		2A9EBD08296C72AA00515320 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9EBD07296C72AA00515320 /* OnboardingViewController.swift */; };
+		2AD98DBF2970632600D0613D /* SkeletonLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD98DBE2970632600D0613D /* SkeletonLoadable.swift */; };
+		2AD98DC1297063D900D0613D /* SkeletonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD98DC0297063D900D0613D /* SkeletonCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		2A9EBD02296C409B00515320 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		2A9EBD05296C68F900515320 /* OnboardingContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerViewController.swift; sourceTree = "<group>"; };
 		2A9EBD07296C72AA00515320 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		2AD98DBE2970632600D0613D /* SkeletonLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonLoadable.swift; sourceTree = "<group>"; };
+		2AD98DC0297063D900D0613D /* SkeletonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				2A400F93296D95E5001A2B9B /* AccountSummaryCell.swift */,
+				2AD98DBE2970632600D0613D /* SkeletonLoadable.swift */,
+				2AD98DC0297063D900D0613D /* SkeletonCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -270,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A400F8F296CDC5A001A2B9B /* AccountSummaryHeaderView.swift in Sources */,
+				2AD98DBF2970632600D0613D /* SkeletonLoadable.swift in Sources */,
 				2A0577A3296F253B007F7514 /* AccountSummaryViewController+Networking.swift in Sources */,
 				2A400F9C296DC953001A2B9B /* CurrencyFormatter.swift in Sources */,
 				2A400F9A296DC8D9001A2B9B /* Decimal+Util.swift in Sources */,
@@ -284,6 +291,7 @@
 				2A400F85296CAF8B001A2B9B /* MainViewController.swift in Sources */,
 				2A400FA0296DEFA0001A2B9B /* UITextField+SecureToggle.swift in Sources */,
 				2A400F89296CB055001A2B9B /* MoveMoneyViewController.swift in Sources */,
+				2AD98DC1297063D900D0613D /* SkeletonCell.swift in Sources */,
 				2A400F9E296DED22001A2B9B /* NSNotificationName.swift in Sources */,
 				2A400F87296CB017001A2B9B /* AccountSummaryViewController.swift in Sources */,
 				2A400F8B296CB084001A2B9B /* MoreViewController.swift in Sources */,
