@@ -30,21 +30,16 @@ class AccountSummaryViewController: UIViewController {
         super.viewDidLoad()
         
         setup()
-        setupNavigationBar()
-        fetchDataAndLoadViews()
-    }
-    
-    func setupNavigationBar() {
-        navigationItem.rightBarButtonItem = logoutBarButtonItem
     }
 }
 
 extension AccountSummaryViewController {
     
     private func setup() {
+        setupNavigationBar()
         setupTableView()
         setupTableHeaderView()
-        fetchDataAndLoadViews()
+        fetchData()
     }
     
     private func setupTableView(){
@@ -72,6 +67,10 @@ extension AccountSummaryViewController {
         size.width = UIScreen.main.bounds.width
         headerView.frame.size = size
         tableView.tableHeaderView = headerView
+    }
+    
+    func setupNavigationBar() {
+        navigationItem.rightBarButtonItem = logoutBarButtonItem
     }
 }
 
@@ -105,8 +104,11 @@ extension AccountSummaryViewController: UITableViewDelegate {
 // MARK: - Networking
 extension AccountSummaryViewController {
     
-    private func fetchDataAndLoadViews() {
+    private func fetchData() {
         
+        let group = DispatchGroup()
+        
+        group.enter()
         fetchProfile(forUserId: "1") { [weak self] result in
             guard let strongSelf = self else { return }
             
@@ -114,12 +116,13 @@ extension AccountSummaryViewController {
             case .success(let profile):
                 strongSelf.profile = profile
                 strongSelf.configureTableHeaderView(with: profile)
-                strongSelf.tableView.reloadData()
             case .failure(let error):
                 print(error.localizedDescription)
             }
+            group.leave()
         }
         
+        group.enter()
         fetchAccounts(forUserId: "1") { [weak self] result in
             guard let strongSelf = self else { return }
             
@@ -127,12 +130,17 @@ extension AccountSummaryViewController {
             case .success(let accounts):
                 strongSelf.accounts = accounts
                 strongSelf.configureTableCells(with: accounts)
-                strongSelf.tableView.reloadData()
             case .failure(let error):
                 print(error.localizedDescription)
             }
+            group.leave()
         }
 
+        group.notify(queue: .main) { [weak self] in
+            guard let strongSelf = self else { return }
+            
+            strongSelf.tableView.reloadData()
+        }
     }
     
     private func configureTableHeaderView(with profile: Profile) {
