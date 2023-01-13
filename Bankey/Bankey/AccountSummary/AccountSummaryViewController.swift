@@ -21,6 +21,17 @@ class AccountSummaryViewController: UIViewController {
     var headerView = AccountSummaryHeaderView(frame: .zero)
     let refreshControl = UIRefreshControl()
     
+    // Networking
+    var profileManager: ProfileManageable = ProfileManager()
+    
+    
+    lazy var errorAlert: UIAlertController = {
+        let alert =  UIAlertController(title: "", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        return alert
+    }()
+    
     var isLoaded =  false
     
     lazy var logoutBarButtonItem: UIBarButtonItem = {
@@ -134,8 +145,20 @@ extension AccountSummaryViewController {
         // Testing - random number selection
         let userId = String(Int.random(in: 1..<4))
         
+        fetchProfile(group: group, userId: userId)
+        fetchAccounts(group: group, userId: userId)
+        
+        group.notify(queue: .main) { [weak self] in
+            guard let strongSelf = self else { return }
+            
+            strongSelf.reloadView()
+        }
+    }
+    
+    private func fetchProfile(group: DispatchGroup, userId: String){
+        
         group.enter()
-        fetchProfile(forUserId: userId) { [weak self] result in
+        profileManager.fetchProfile(forUserId: userId) { [weak self] result in
             guard let strongSelf = self else { return }
             
             switch result {
@@ -146,7 +169,9 @@ extension AccountSummaryViewController {
             }
             group.leave()
         }
+    }
         
+    private func fetchAccounts(group: DispatchGroup, userId: String){
         group.enter()
         fetchAccounts(forUserId: userId) { [weak self] result in
             guard let strongSelf = self else { return }
@@ -160,19 +185,17 @@ extension AccountSummaryViewController {
             }
             group.leave()
         }
+    }
+    
+    private func reloadView() {
+        tableView.refreshControl?.endRefreshing()
         
-        group.notify(queue: .main) { [weak self] in
-            guard let strongSelf = self else { return }
-            
-            strongSelf.tableView.refreshControl?.endRefreshing()
-            
-            guard let profile = strongSelf.profile else { return }
-            strongSelf.isLoaded = true
-            
-            strongSelf.configureTableHeaderView(with: profile)
-            strongSelf.configureTableCells(with: strongSelf.accounts)
-            strongSelf.tableView.reloadData()
-        }
+        guard let profile = profile else { return }
+        isLoaded = true
+        
+        configureTableHeaderView(with: profile)
+        configureTableCells(with: accounts)
+        tableView.reloadData()
     }
     
     private func configureTableHeaderView(with profile: Profile) {
@@ -190,6 +213,12 @@ extension AccountSummaryViewController {
     }
     
     private func displayError(_ error: NetworkError) {
+        let titleMessage = titleAndMessage(for: error)
+        
+        showErrorAlert(title: titleMessage.0, message: titleMessage.1)
+    }
+    
+    private func titleAndMessage(for error: NetworkError) -> (String, String) {
         let title: String
         let message: String
         switch error {
@@ -205,19 +234,17 @@ extension AccountSummaryViewController {
             title = "Decoding Error"
             message = "We could not process your request. Please try again."
         }
-        
-        showErrorAlert(title: title, message: message)
+    
+        return (title, message)
     }
     
     private func showErrorAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title,
-                                      message: message,
-                                      preferredStyle: .alert)
+        errorAlert.title = title
+        errorAlert.message = message
         
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        
-        present(alert, animated: true, completion: nil)
+        present(errorAlert, animated: true, completion: nil)
     }
+    
 }
 
 // MARK: - Actions

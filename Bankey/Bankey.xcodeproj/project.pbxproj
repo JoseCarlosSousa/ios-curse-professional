@@ -32,6 +32,7 @@
 		2A9EBD08296C72AA00515320 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9EBD07296C72AA00515320 /* OnboardingViewController.swift */; };
 		2AD98DBF2970632600D0613D /* SkeletonLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD98DBE2970632600D0613D /* SkeletonLoadable.swift */; };
 		2AD98DC1297063D900D0613D /* SkeletonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD98DC0297063D900D0613D /* SkeletonCell.swift */; };
+		2AD98DC42970763400D0613D /* ProfileManageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD98DC32970763400D0613D /* ProfileManageable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		2A9EBD07296C72AA00515320 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		2AD98DBE2970632600D0613D /* SkeletonLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonLoadable.swift; sourceTree = "<group>"; };
 		2AD98DC0297063D900D0613D /* SkeletonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonCell.swift; sourceTree = "<group>"; };
+		2AD98DC32970763400D0613D /* ProfileManageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManageable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				2A0577A2296F253B007F7514 /* AccountSummaryViewController+Networking.swift */,
 				2A400F91296D9594001A2B9B /* Header */,
 				2A400F92296D95A6001A2B9B /* Cells */,
+				2AD98DC22970760E00D0613D /* Networking */,
 			);
 			path = AccountSummary;
 			sourceTree = "<group>";
@@ -204,6 +207,14 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		2AD98DC22970760E00D0613D /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				2AD98DC32970763400D0613D /* ProfileManageable.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -286,6 +297,7 @@
 				2A400F81296C9828001A2B9B /* LocalState.swift in Sources */,
 				2A9EBCF1296C3D8C00515320 /* LoginViewController.swift in Sources */,
 				2A9EBD08296C72AA00515320 /* OnboardingViewController.swift in Sources */,
+				2AD98DC42970763400D0613D /* ProfileManageable.swift in Sources */,
 				2A400F95296D95E5001A2B9B /* AccountSummaryCell.swift in Sources */,
 				2A9EBD06296C68F900515320 /* OnboardingContainerViewController.swift in Sources */,
 				2A400F85296CAF8B001A2B9B /* MainViewController.swift in Sources */,
